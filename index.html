@@ -742,12 +742,18 @@
           }
           t.addEventListener('scroll',upd,{passive:true});
           upd();
-          
-          var pBtn=document.querySelector('.vs-btn-prev');
-          var nBtn=document.querySelector('.vs-btn-next');
-          if(pBtn)pBtn.addEventListener('click',function(){t.scrollLeft-=236});
-          if(nBtn)nBtn.addEventListener('click',function(){t.scrollLeft+=236});
         })();
+        
+        // Event delegation to survive React hydration
+        document.addEventListener('click', function(e) {
+          var pBtn = e.target.closest('.vs-btn-prev');
+          var nBtn = e.target.closest('.vs-btn-next');
+          var t = document.getElementById('vs-track');
+          if (t) {
+            if (pBtn) t.scrollLeft -= 236;
+            if (nBtn) t.scrollLeft += 236;
+          }
+        });
       </script>
     </div>
   </section>
@@ -966,20 +972,18 @@ class Component extends DCLogic {
     document.body.style.overflow='auto';
   }
   
-  (function(){
-    var trigger = document.getElementById('hero-video-trigger');
-    if (trigger) trigger.addEventListener('click', openHeroVideo);
-    
-    var closeBtn = document.getElementById('hero-lightbox-close');
-    if (closeBtn) closeBtn.addEventListener('click', closeHeroVideo);
-    
-    var lightbox = document.getElementById('hero-lightbox');
-    if (lightbox) {
-      lightbox.addEventListener('click', function(e) {
-        if (e.target === this) closeHeroVideo();
-      });
+  // Event delegation to survive React hydration
+  document.addEventListener('click', function(e) {
+    if (e.target.closest('#hero-video-trigger')) {
+      openHeroVideo();
     }
-  })();
+    if (e.target.closest('#hero-lightbox-close')) {
+      closeHeroVideo();
+    }
+    if (e.target.matches('#hero-lightbox')) {
+      closeHeroVideo();
+    }
+  });
   document.addEventListener('keydown',function(e){if(e.key==='Escape')closeHeroVideo();});
 </script>
 </body>
