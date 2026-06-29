@@ -66,6 +66,8 @@
   .dm-btn-primary:active{transform:scale(.98)}
 
   .vertical-slider::-webkit-scrollbar{display:none}
+  .vs-btn-prev { left: -20px; }
+  .vs-btn-next { right: -20px; }
 
   .dm-btn-ghost{
     display:inline-flex;align-items:center;gap:8px;
@@ -117,6 +119,8 @@
   .dm-grid-bento{grid-template-columns:1fr !important;grid-auto-rows:auto !important}
   .dm-grid-bento > *{grid-column:span 1 !important;grid-row:span 1 !important}
   .testimonial-horizontal{grid-template-columns:1fr !important}
+  .vs-btn-prev { left: 10px !important; }
+  .vs-btn-next { right: 10px !important; }
   }
   .hero-video-container {
     aspect-ratio: 9/16;
@@ -685,10 +689,10 @@
         <!-- Gradient fade right edge -->
         <div style="position:absolute;top:0;right:0;width:80px;height:calc(100% - 12px);background:linear-gradient(to right,transparent,#0d0f14);z-index:2;pointer-events:none"></div>
         <!-- Nav buttons -->
-        <button onclick="document.getElementById('vs-track').scrollBy({left:-252,behavior:'smooth'})" style="position:absolute;left:-20px;top:50%;transform:translateY(-50%);z-index:3;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#EDEDEF;font-size:20px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center" onmouseover="this.style.background='rgba(94,106,210,.35)'" onmouseout="this.style.background='rgba(255,255,255,.08)'">&#8249;</button>
-        <button onclick="document.getElementById('vs-track').scrollBy({left:252,behavior:'smooth'})" style="position:absolute;right:-20px;top:50%;transform:translateY(-50%);z-index:3;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#EDEDEF;font-size:20px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center" onmouseover="this.style.background='rgba(94,106,210,.35)'" onmouseout="this.style.background='rgba(255,255,255,.08)'">&#8250;</button>
+        <button class="vs-btn-prev" onclick="document.getElementById('vs-track').scrollLeft -= 236" style="position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#EDEDEF;font-size:20px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center" onmouseover="this.style.background='rgba(94,106,210,.35)'" onmouseout="this.style.background='rgba(255,255,255,.08)'">&#8249;</button>
+        <button class="vs-btn-next" onclick="document.getElementById('vs-track').scrollLeft += 236" style="position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#EDEDEF;font-size:20px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center" onmouseover="this.style.background='rgba(94,106,210,.35)'" onmouseout="this.style.background='rgba(255,255,255,.08)'">&#8250;</button>
         <!-- Track -->
-        <div id="vs-track" class="vertical-slider" style="display:flex;gap:16px;overflow-x:auto;padding-bottom:0;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none">
+        <div id="vs-track" class="vertical-slider" style="display:flex;gap:16px;overflow-x:auto;padding-bottom:0;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none">
           <div style="flex:0 0 220px;border-radius:12px;overflow:hidden;position:relative;aspect-ratio:9/16;background:#111;scroll-snap-align:start">
             <iframe src="https://player.vimeo.com/video/1204908632?h=9ad9d5e2b3&title=0&byline=0&portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;border:none" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
           </div>
